@@ -19,7 +19,7 @@
         background-color: white;
         background: linear-gradient(45deg,#075DA4,#388FDA, #F5FFFA) no-repeat fixed;
         text-align: center;
-        margin: 20px;
+        padding: 2%;
       }
       footer div {
         margin-top: 30px;
@@ -38,9 +38,23 @@
     </style>
   </head>
   <body>
-    <h1><%= @onda.page_header %></h1>
-    <a href="<%= @onda.page_image_link_target %>">
-      <amp-img src="<%= @onda.page_image %>" alt="<%= "Image for " + @onda.card_title %>" height="<%= @onda.page_image_height %>" width="<%= @onda.page_image_width %>"></amp-img>
+    <div class='heading'>
+      <h1><%= @onda.page_header %></h1>
+    </div>
+    <a class='main-image' href="<%= @onda.page_image_link_target %>">
+      <amp-img
+        media="(min-width: 800px)"
+        src="<%= @onda.page_image %>"
+        alt="<%= "Image for " + @onda.card_title %>"
+        height="400"
+        width="800"></amp-img>
+      <amp-img
+        media="(max-width: 799px)"
+        src="<%= @onda.page_image %>"
+        alt="<%= "Image for " + @onda.card_title %>"
+        height="200"
+        width="400"
+        layout="responsive"></amp-img>
     </a>
     <footer>
       <div></div>
