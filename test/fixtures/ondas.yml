@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  card_title: MyString
+  card_description: MyString
+  card_image_url: MyText
+  page_title: MyString
+  page_header: MyString
+  page_image: MyText
+  page_image_width: 1
+  page_image_height: 1
+  page_image_link_target: MyText
+
+two:
+  card_title: MyString
+  card_description: MyString
+  card_image_url: MyText
+  page_title: MyString
+  page_header: MyString
+  page_image: MyText
+  page_image_width: 1
+  page_image_height: 1
+  page_image_link_target: MyText

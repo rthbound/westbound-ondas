@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Ondas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Card title</th>
+      <th>Card description</th>
+      <th>Card image url</th>
+      <th>Page title</th>
+      <th>Page header</th>
+      <th>Page image</th>
+      <th>Page image width</th>
+      <th>Page image height</th>
+      <th>Page image link target</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ondas.each do |onda| %>
+      <tr>
+        <td><%= onda.card_title %></td>
+        <td><%= onda.card_description %></td>
+        <td><%= onda.card_image_url %></td>
+        <td><%= onda.page_title %></td>
+        <td><%= onda.page_header %></td>
+        <td><%= onda.page_image %></td>
+        <td><%= onda.page_image_width %></td>
+        <td><%= onda.page_image_height %></td>
+        <td><%= onda.page_image_link_target %></td>
+        <td><%= link_to 'Preview', onda %></td>
+        <td><%= link_to 'Publish', "https://cdn.ampproject.org/c/" + onda_url(onda) %></td>
+        <td><%= link_to 'Edit', edit_onda_path(onda) %></td>
+        <td><%= link_to 'Destroy', onda, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Onda', new_onda_path %>

@@ -1,0 +1,62 @@
+<%= form_for(onda) do |f| %>
+  <% if onda.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(onda.errors.count, "error") %> prohibited this onda from being saved:</h2>
+
+      <ul>
+      <% onda.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :card_title %>
+    <%= f.text_field :card_title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :card_description %>
+    <%= f.text_field :card_description %>
+  </div>
+
+  <div class="field">
+    <%= f.label :card_image_url %>
+    <%= f.text_area :card_image_url %>
+  </div>
+
+  <div class="field">
+    <%= f.label :page_title %>
+    <%= f.text_field :page_title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :page_header %>
+    <%= f.text_field :page_header %>
+  </div>
+
+  <div class="field">
+    <%= f.label :page_image %>
+    <%= f.text_area :page_image %>
+  </div>
+
+  <div class="field">
+    <%= f.label :page_image_width %>
+    <%= f.number_field :page_image_width %>
+  </div>
+
+  <div class="field">
+    <%= f.label :page_image_height %>
+    <%= f.number_field :page_image_height %>
+  </div>
+
+  <div class="field">
+    <%= f.label :page_image_link_target %>
+    <%= f.text_area :page_image_link_target %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
