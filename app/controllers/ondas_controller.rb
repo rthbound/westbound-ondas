@@ -1,5 +1,6 @@
 class OndasController < ApplicationController
   before_action :set_onda, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:show]
 
   # GET /ondas
   # GET /ondas.json
