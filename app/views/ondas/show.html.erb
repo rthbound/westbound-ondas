@@ -26,7 +26,7 @@
         width: 100%;
         max-height:30px;
         min-height: 30px;
-        background-image: url('made.png');
+        background-image: url('/made.png');
         background-position: center center;
         background-size: contain;
         background-repeat: no-repeat;
@@ -40,7 +40,7 @@
   <body>
     <h1><%= @onda.page_header %></h1>
     <a href="<%= @onda.page_image_link_target %>">
-      <amp-img src="<%= @onda.page_image %>" alt="Welcome" height="<%= @onda.page_image_height %>" width="<%= @onda.page_image_width %>"></amp-img>
+      <amp-img src="<%= @onda.page_image %>" alt="<%= "Image for " + @onda.card_title %>" height="<%= @onda.page_image_height %>" width="<%= @onda.page_image_width %>"></amp-img>
     </a>
     <footer>
       <div></div>

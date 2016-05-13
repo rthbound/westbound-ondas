@@ -31,7 +31,7 @@
         <td><%= onda.page_image_height %></td>
         <td><%= onda.page_image_link_target %></td>
         <td><%= link_to 'Preview', onda %></td>
-        <td><%= link_to 'Publish', "https://cdn.ampproject.org/c/" + onda_url(onda) %></td>
+        <td><%= link_to 'Publish', "https://cdn.ampproject.org/c/" + onda_url(onda).gsub('http://', '') %></td>
         <td><%= link_to 'Edit', edit_onda_path(onda) %></td>
         <td><%= link_to 'Destroy', onda, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
