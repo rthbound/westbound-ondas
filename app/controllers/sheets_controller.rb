@@ -1,6 +1,6 @@
 require 'open-uri'
 class SheetsController < ApplicationController
-  before_action :set_sheet, only: [:show, :edit, :update, :destroy]
+  before_action :set_sheet, only: [:edit, :update, :destroy]
   before_action :authenticate_user!, except: [:show]
 
   # GET /sheets
@@ -12,6 +12,8 @@ class SheetsController < ApplicationController
   # GET /sheets/1
   # GET /sheets/1.json
   def show
+    @sheet = Sheet.where(id: params[:id], passphrase: params[:passphrase].to_s).first!
+
     if request.xhr?
       response = open(@sheet.url).read.split("\r\n")
       render json: response and return
@@ -36,7 +38,7 @@ class SheetsController < ApplicationController
 
     respond_to do |format|
       if @sheet.save
-        format.html { redirect_to @sheet, notice: 'Sheet was successfully created.' }
+        format.html { redirect_to sheet_path(@sheet, passphrase: @sheet.passphrase), notice: 'Sheet was successfully created.' }
         format.json { render :show, status: :created, location: @sheet }
       else
         format.html { render :new }
@@ -50,7 +52,7 @@ class SheetsController < ApplicationController
   def update
     respond_to do |format|
       if @sheet.update(sheet_params)
-        format.html { redirect_to @sheet, notice: 'Sheet was successfully updated.' }
+        format.html { redirect_to sheet_path(@sheet, passphrase: @sheet.passphrase), notice: 'Sheet was successfully updated.' }
         format.json { render :show, status: :ok, location: @sheet }
       else
         format.html { render :edit }
@@ -77,6 +79,6 @@ class SheetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sheet_params
-      params.require(:sheet).permit(:url, :title)
+      params.require(:sheet).permit(:url, :title, :passphrase)
     end
 end
