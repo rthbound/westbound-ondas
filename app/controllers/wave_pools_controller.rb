@@ -1,4 +1,5 @@
 require 'open-uri'
+require 'csv'
 class WavePoolsController < ApplicationController
   before_action :set_wave_pool, only: [:show, :edit, :update, :destroy, :index]
   prepend_before_action :set_wave_pool_id, only: [:index]
