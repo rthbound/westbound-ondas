@@ -5,7 +5,7 @@ class OndasController < ApplicationController
   # GET /ondas
   # GET /ondas.json
   def index
-    @ondas = Onda.order(:created_at).where(destroyed_at: nil)
+    @ondas = Onda.order("created_at DESC").where(destroyed_at: nil)
   end
 
   # GET /ondas/1
