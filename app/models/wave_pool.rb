@@ -1,0 +1,2 @@
+class WavePool < ApplicationRecord
+end

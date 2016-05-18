@@ -5,7 +5,7 @@ class OndasController < ApplicationController
   # GET /ondas
   # GET /ondas.json
   def index
-    @ondas = Onda.all
+    @ondas = Onda.order(:created_at).where(destroyed_at: nil)
   end
 
   # GET /ondas/1
@@ -30,7 +30,7 @@ class OndasController < ApplicationController
 
     respond_to do |format|
       if @onda.save
-        format.html { redirect_to @onda, notice: 'Onda was successfully created.' }
+        format.html { redirect_to ondas_path, notice: 'Onda was successfully created.' }
         format.json { render :show, status: :created, location: @onda }
       else
         format.html { render :new }
@@ -44,7 +44,7 @@ class OndasController < ApplicationController
   def update
     respond_to do |format|
       if @onda.update(onda_params)
-        format.html { redirect_to @onda, notice: 'Onda was successfully updated.' }
+        format.html { redirect_to ondas_path, notice: 'Onda was successfully updated.' }
         format.json { render :show, status: :ok, location: @onda }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class OndasController < ApplicationController
   # DELETE /ondas/1
   # DELETE /ondas/1.json
   def destroy
-    @onda.destroy
+    @onda.update_attributes(destroyed_at: Time.now)
     respond_to do |format|
       format.html { redirect_to ondas_url, notice: 'Onda was successfully destroyed.' }
       format.json { head :no_content }

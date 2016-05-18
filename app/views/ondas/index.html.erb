@@ -1,40 +1,55 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Ondas</h1>
+<div class='row'>
+  <div class='wave-pool'>
+  </div>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Card title</th>
-      <th>Card description</th>
-      <th>Card image url</th>
-      <th>Page title</th>
-      <th>Page header</th>
-      <th>Page image</th>
-      <th>Page image link target</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class='row ondas'>
+  <h1>Ondas</h1>
 
-  <tbody>
-    <% @ondas.each do |onda| %>
+  <table class='table table-small'>
+    <thead>
       <tr>
-        <td><%= onda.card_title %></td>
-        <td><%= onda.card_description %></td>
-        <td><%= onda.card_image_url %></td>
-        <td><%= onda.page_title %></td>
-        <td><%= onda.page_header %></td>
-        <td><%= onda.page_image %></td>
-        <td><%= onda.page_image_link_target %></td>
-        <td><%= link_to 'Preview', onda %></td>
-        <td><%= link_to 'Publish', "https://cdn.ampproject.org/c/" + onda_url(onda).gsub(/http[s]{0,1}:\/\//, { 'http://' => '', 'https://' => 's/'}) %></td>
-        <td><%= link_to 'Edit', edit_onda_path(onda) %></td>
-        <td><%= link_to 'Destroy', onda, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>ID</th>
+        <th>Card image url</th>
+        <th>Card title</th>
+        <th>Card description</th>
+        <th>Page title</th>
+        <th>Page header</th>
+        <th>Page image/url</th>
+        <th colspan="1"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @ondas.each do |onda| %>
+        <tr>
+          <td class='col-md-1'><%= onda.id %></td>
+          <td class='col-md-1'><%= image_tag(onda.card_image_url, height: 50, width: 100) %></td>
+          <td class='col-md-2'><%= onda.card_title %></td>
+          <td class='col-md-2'><%= onda.card_description %></td>
+          <td class='col-md-2'><%= onda.page_title %></td>
+          <td class='col-md-2'><%= onda.page_header %></td>
+          <td class='col-md-1'><%= link_to(image_tag(onda.page_image, height: 50, width: 100), onda.page_image_link_target) %></td>
+          <td class='col-md-2'>
+            <%= link_to 'Edit', edit_onda_path(onda), class: 'btn btn-default' %></br>
+            <%= link_to 'Preview', onda, class: 'btn btn-success' %></br>
+            <%= link_to 'Publish', "https://cdn.ampproject.org/c/" + onda_url(onda).gsub(/http[s]{0,1}:\/\//, { 'http://' => '', 'https://' => 's/'}), data: { confirm: "This caches the Onda with google's AMP cache. Click OK if you're ready to finalize this Onda for sharing." }, class: 'btn btn-warning' %></br>
+            <%= link_to 'Destroy', onda, method: :delete, class: 'btn btn-danger', data: { confirm: "Are you sure? Not recommended for content we've shared." } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to 'New Onda', new_onda_path %>
+  <%= link_to 'New Onda Form', new_onda_path %>
+</div>
+
+<script type='text/javascript'>
+  $(document).ready(function(){
+    $.get("/wave_pools", function(data){
+        $(".wave-pool").append(data);
+    })
+  });
+</script>

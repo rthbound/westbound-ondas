@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160515181719) do
+ActiveRecord::Schema.define(version: 20160518054703) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,9 @@ ActiveRecord::Schema.define(version: 20160515181719) do
     t.text     "page_image_link_target"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.string   "youtube_id"
+    t.text     "card_video_url"
+    t.datetime "destroyed_at"
   end
 
   create_table "sheets", force: :cascade do |t|
@@ -53,6 +56,12 @@ ActiveRecord::Schema.define(version: 20160515181719) do
     t.datetime "updated_at",                          null: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  end
+
+  create_table "wave_pools", force: :cascade do |t|
+    t.text     "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

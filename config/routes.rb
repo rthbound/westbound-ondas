@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :wave_pools, only: [:index]
   resources :sheets
   devise_for :users
   resources :ondas

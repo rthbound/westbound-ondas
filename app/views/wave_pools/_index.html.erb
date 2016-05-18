@@ -1,0 +1,31 @@
+<h1>The Wave Pool (google sheet)</h1>
+
+<table class='table small'>
+  <thead>
+    <tr>
+      <th>Row</th>
+      <th>Card image url</th>
+      <th>Card title</th>
+      <th>Card description</th>
+      <th>Page title</th>
+      <th>Page header</th>
+      <th>Page image/url</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @wave_pools.each_with_index do |wave_pool,i| %>
+      <tr>
+        <td class='col-md-1'><%= i + 2 %></td>
+        <td class='col-md-1'><%= image_tag(wave_pool["card_image_url"], height: 50, width: 100)%></td>
+        <td class='col-md-2'><%= wave_pool["card_title"] %></td>
+        <td class='col-md-2'><%= wave_pool["card_description"] %></td>
+        <td class='col-md-2'><%= wave_pool["page_title"] %></td>
+        <td class='col-md-2'><%= wave_pool["page_header"] %></td>
+        <td class='col-md-1'><%= link_to(image_tag(wave_pool["page_image"], height: 50, width: 100), wave_pool["page_image_link_target"])%></td>
+        <td class='col-md-2'><%= button_to "Build Onda", ondas_path(post_onda_from_wave_pool_params(wave_pool)), class: 'btn btn-small btn-info' %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
