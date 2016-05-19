@@ -52,6 +52,10 @@ Lora:400,700italic,700,400italic' rel='stylesheet' type='text/css'>
       background-color: #f0f0f0;
       margin: 3px;
     }
+
+    .hidden {
+      display: none;
+    }
   </style>
   <script type='text/javascript'>
     $(document).ready(function(){
@@ -59,11 +63,33 @@ Lora:400,700italic,700,400italic' rel='stylesheet' type='text/css'>
         var html = $.map(data, function(el,i){
           el = el.replace(/["]+/g, '')
           el = el.replace(/:flame:/g, '🔥')
-          $(".row").append($("<p>" + el + "<br /><a class='btn button-hvr-shadow-radial' href=\"https://twitter.com/intent/tweet?text="
+          $(".row").append($("<p class='tweet'>" + el + "<br /><a class='btn button-hvr-shadow-radial' href=\"https://twitter.com/intent/tweet?text="
                               + encodeURIComponent(el)
                               + "\" target='_blank'><span><strong>"
                               + i + " - Tweet This</strong></span></a></p>"));
           });
+
+      })
+
+      $("input").on('change', function(){
+        var a = parseInt($("input.a").val());
+        var b = parseInt($("input.b").val());
+
+        if($.isNumeric(a) && $.isNumeric(b) && a < b){
+          // a-to-b
+          $(".tweet").slice(b + 1).addClass("hidden");
+          $(".tweet").slice(0, Math.max(a, 0)).addClass("hidden");
+          $(".tweet").slice(a, b + 1).removeClass("hidden")
+        } else if($.isNumeric(a)){
+          // a-to-end
+          $(".tweet").slice(0, a).addClass("hidden")
+          $(".tweet").slice(a).removeClass("hidden")
+        } else if($.isNumeric(b)){
+          $(".tweet").slice(b).addClass("hidden");
+          $(".tweet").slice(0, b + 1).removeClass("hidden");
+        } else {
+          $(".tweet").removeClass("hidden")
+        }
       })
     });
   </script>
@@ -76,6 +102,8 @@ Lora:400,700italic,700,400italic' rel='stylesheet' type='text/css'>
     <div class="row">
       <div class='heading'>
         <h1><%= @sheet.title %></h1>
+        <%= text_field_tag(:a, nil, class: 'a', placeholder: 'start') %>
+        <%= text_field_tag(:b, nil, class: 'b', placeholder: 'end') %>
       </div>
     </div>
   </div>
