@@ -11,7 +11,11 @@ class OndasController < ApplicationController
   # GET /ondas/1
   # GET /ondas/1.json
   def show
-    render layout: false
+    if @onda.youtube_id
+      render "youtube", layout: false
+    else
+      render layout: false
+    end
   end
 
   # GET /ondas/new
@@ -71,6 +75,6 @@ class OndasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def onda_params
-      params.require(:onda).permit(:card_title, :card_description, :card_image_url, :page_title, :page_header, :page_image, :page_image_width, :page_image_height, :page_image_link_target)
+      params.require(:onda).permit(:card_title, :card_description, :card_image_url, :page_title, :page_header, :page_image, :page_image_width, :page_image_height, :page_image_link_target, :youtube_id)
     end
 end

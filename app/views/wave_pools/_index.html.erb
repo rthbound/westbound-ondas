@@ -23,7 +23,11 @@
         <td class='col-md-2'><%= wave_pool["card_description"] %></td>
         <td class='col-md-2'><%= wave_pool["page_title"] %></td>
         <td class='col-md-2'><%= wave_pool["page_header"] %></td>
-        <td class='col-md-1'><%= link_to(image_tag(wave_pool["page_image"], height: 50, width: 100), wave_pool["page_image_link_target"])%></td>
+          <% if wave_pool["youtube_id"].present? %>
+            <td class='col-md-1'><%= wave_pool["youtube_id"] %></td>
+          <% else %>
+            <td class='col-md-1'><%= link_to(image_tag(wave_pool["page_image"], height: 50, width: 100), wave_pool["page_image_link_target"])%></td>
+          <% end %>
         <td class='col-md-2'><%= button_to "Build Onda", ondas_path(post_onda_from_wave_pool_params(wave_pool)), class: 'btn btn-small btn-info' %>
       </tr>
     <% end %>
