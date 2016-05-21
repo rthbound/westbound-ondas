@@ -11,7 +11,7 @@ class OndasController < ApplicationController
   # GET /ondas/1
   # GET /ondas/1.json
   def show
-    if @onda.youtube_id
+    if @onda.youtube_id.present?
       render "youtube", layout: false
     else
       render layout: false
