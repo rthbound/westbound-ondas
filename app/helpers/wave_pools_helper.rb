@@ -10,6 +10,7 @@ module WavePoolsHelper
         page_header:            wave_pool["page_header"],
         page_image:             wave_pool["page_image"],
         page_image_link_target: wave_pool["page_image_link_target"],
+        youtube_id:             wave_pool["youtube_id"],
       }
     }
   end
