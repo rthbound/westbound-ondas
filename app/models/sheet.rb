@@ -2,5 +2,5 @@ class Sheet < ApplicationRecord
   validates :url, presence: true
   validates :passphrase, presence: true
 
-  belongs_to :onda
+  belongs_to :onda, optional: true
 end

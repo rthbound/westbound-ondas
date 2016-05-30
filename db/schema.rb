@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160530150429) do
+ActiveRecord::Schema.define(version: 20160530163609) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,10 +43,11 @@ ActiveRecord::Schema.define(version: 20160530150429) do
   create_table "sheets", force: :cascade do |t|
     t.text     "url"
     t.string   "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.string   "passphrase"
     t.integer  "onda_id"
+    t.string   "tweet_override"
     t.index ["onda_id"], name: "index_sheets_on_onda_id", using: :btree
   end
 
