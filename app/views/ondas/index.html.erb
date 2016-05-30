@@ -12,6 +12,7 @@
     <thead>
       <tr>
         <th>ID</th>
+        <th>Tweet</th>
         <th>Card image url</th>
         <th>Card title</th>
         <th>Card description</th>
@@ -26,10 +27,11 @@
       <% @ondas.each do |onda| %>
         <tr>
           <td class='col-md-1'><%= onda.id %></td>
+          <td class='col-md-2'><%= onda.tweet %></td>
           <td class='col-md-1'><%= image_tag(onda.card_image_url, height: 50, width: 100) %></td>
           <td class='col-md-2'><%= onda.card_title %></td>
           <td class='col-md-2'><%= onda.card_description %></td>
-          <td class='col-md-2'><%= onda.page_title %></td>
+          <td class='col-md-1'><%= onda.page_title %></td>
           <td class='col-md-2'><%= onda.page_header %></td>
           <% if onda.youtube_id.present? %>
             <td class='col-md-1'><%= onda.youtube_id %></td>

@@ -66,8 +66,8 @@ Lora:400,700italic,700,400italic' rel='stylesheet' type='text/css'>
           el = el.replace(/:cloud:/g, '☁')
           el = el.replace(/:lightning:/g, '⚡')
           el = el.replace(/:ocean:/g, '🌊')
-          $(".row").append($("<p class='tweet'>" + el + "<br /><a class='btn button-hvr-shadow-radial' href=\"https://twitter.com/intent/tweet?text="
-                              + encodeURIComponent(el)
+          $(".row").append($("<p class='tweet'>@" + el + " " + $('.tweet').html() + "<br /><a class='btn button-hvr-shadow-radial' href=\"https://twitter.com/intent/tweet?text="
+                              + encodeURIComponent("@" + el + " " + $('.tweet').html())
                               + "\" target='_blank'><span><strong>"
                               + i + " - Tweet This</strong></span></a></p>"));
           });
@@ -104,7 +104,7 @@ Lora:400,700italic,700,400italic' rel='stylesheet' type='text/css'>
   <div class='container-fluid'>
     <div class="row">
       <div class='heading'>
-        <h1><%= @sheet.title %></h1>
+        <h1 class='tweet'><%= @sheet.onda.tweet_text %></h1>
         <%= text_field_tag(:a, nil, class: 'a', placeholder: 'start') %>
         <%= text_field_tag(:b, nil, class: 'b', placeholder: 'end') %>
       </div>

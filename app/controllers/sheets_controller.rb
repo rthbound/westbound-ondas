@@ -24,11 +24,13 @@ class SheetsController < ApplicationController
 
   # GET /sheets/new
   def new
+    @ondas = Onda.where(destroyed_at: nil)
     @sheet = Sheet.new
   end
 
   # GET /sheets/1/edit
   def edit
+    @ondas = Onda.where(destroyed_at: nil)
   end
 
   # POST /sheets
@@ -79,6 +81,6 @@ class SheetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sheet_params
-      params.require(:sheet).permit(:url, :title, :passphrase)
+      params.require(:sheet).permit(:url, :title, :passphrase, :onda_id)
     end
 end

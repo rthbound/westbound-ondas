@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th>Row</th>
+      <th>Tweet</th>
       <th>Card image url</th>
       <th>Card title</th>
       <th>Card description</th>
@@ -18,10 +19,11 @@
     <% @wave_pools.each_with_index do |wave_pool,i| %>
       <tr>
         <td class='col-md-1'><%= i + 2 %></td>
+        <td class='col-md-2'><%= wave_pool["tweet"] %></td>
         <td class='col-md-1'><%= image_tag(wave_pool["card_image_url"], height: 50, width: 100)%></td>
         <td class='col-md-2'><%= wave_pool["card_title"] %></td>
         <td class='col-md-2'><%= wave_pool["card_description"] %></td>
-        <td class='col-md-2'><%= wave_pool["page_title"] %></td>
+        <td class='col-md-1'><%= wave_pool["page_title"] %></td>
         <td class='col-md-2'><%= wave_pool["page_header"] %></td>
           <% if wave_pool["youtube_id"].present? %>
             <td class='col-md-1'><%= wave_pool["youtube_id"] %></td>

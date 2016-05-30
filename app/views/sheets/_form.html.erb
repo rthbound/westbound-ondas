@@ -12,6 +12,11 @@
   <% end %>
 
   <div class="form-group">
+    <%= f.label :onda_id, "Onda/Tweet" %>
+    <%= f.select :onda_id, @ondas.collect {|o| [ [o.id, o.tweet].join(" - "), o.id ] }, include_blank: true, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
     <%= f.label :url %>
     <%= f.text_field :url, class: 'form-control' %>
   </div>

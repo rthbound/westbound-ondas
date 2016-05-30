@@ -4,6 +4,7 @@ module WavePoolsHelper
       onda: {
         method: :post,
         card_title:             wave_pool["card_title"],
+        tweet:                  wave_pool["tweet"],
         card_description:       wave_pool["card_description"],
         card_image_url:         wave_pool["card_image_url"],
         page_title:             wave_pool["page_title"],

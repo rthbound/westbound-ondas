@@ -11,10 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160521185044) do
+ActiveRecord::Schema.define(version: 20160530150429) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "listings", force: :cascade do |t|
+    t.string   "handle"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "ondas", force: :cascade do |t|
     t.string   "card_title"
@@ -31,6 +37,7 @@ ActiveRecord::Schema.define(version: 20160521185044) do
     t.text     "card_video_url"
     t.datetime "destroyed_at"
     t.string   "youtube_id"
+    t.string   "tweet"
   end
 
   create_table "sheets", force: :cascade do |t|
@@ -39,6 +46,8 @@ ActiveRecord::Schema.define(version: 20160521185044) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "passphrase"
+    t.integer  "onda_id"
+    t.index ["onda_id"], name: "index_sheets_on_onda_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -64,4 +73,5 @@ ActiveRecord::Schema.define(version: 20160521185044) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "sheets", "ondas"
 end
