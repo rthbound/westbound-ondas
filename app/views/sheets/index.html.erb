@@ -17,7 +17,7 @@
     <% @sheets.each do |sheet| %>
       <tr>
         <td><%= sheet.id %></td>
-        <td><%= link_to(sheet.onda_id, onda_path(sheet.onda_id)) %></td>
+        <td><%= link_to(sheet.onda_id, onda_path(sheet.onda_id)) if sheet.onda_id %></td>
         <td><%= sheet.url %></td>
         <td><%= sheet.title %></td>
         <td><%= link_to 'Show', sheet_path(sheet, passphrase: sheet.passphrase) %></td>
