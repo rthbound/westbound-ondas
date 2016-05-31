@@ -6,10 +6,10 @@
   <thead>
     <tr>
       <th>Id</th>
-      <th>Onda Id</th>
+      <th>Tweet</th>
       <th>Url</th>
       <th>Title</th>
-      <th colspan="3"></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
@@ -17,12 +17,11 @@
     <% @sheets.each do |sheet| %>
       <tr>
         <td><%= sheet.id %></td>
-        <td><%= link_to(sheet.onda_id, onda_path(sheet.onda_id)) if sheet.onda_id %></td>
+        <td><%= tweet_sheet_text %></td>
         <td><%= sheet.url %></td>
         <td><%= sheet.title %></td>
         <td><%= link_to 'Show', sheet_path(sheet, passphrase: sheet.passphrase) %></td>
         <td><%= link_to 'Edit', edit_sheet_path(sheet) %></td>
-        <td><%= link_to 'Destroy', sheet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
