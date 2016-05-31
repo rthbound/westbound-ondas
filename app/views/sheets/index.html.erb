@@ -17,7 +17,7 @@
     <% @sheets.each do |sheet| %>
       <tr>
         <td><%= sheet.id %></td>
-        <td><%= tweet_sheet_text %></td>
+        <td><%= tweet_sheet_text(sheet) %></td>
         <td><%= sheet.url %></td>
         <td><%= sheet.title %></td>
         <td><%= link_to 'Show', sheet_path(sheet, passphrase: sheet.passphrase) %></td>
