@@ -13,6 +13,8 @@ class OndasController < ApplicationController
   def show
     if @onda.youtube_id.present?
       render "youtube", layout: false
+    elsif @onda.facebook_video_url.present?
+      render "facebook", layout: false
     else
       render layout: false
     end
@@ -75,6 +77,6 @@ class OndasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def onda_params
-      params.require(:onda).permit(:tweet, :card_title, :card_description, :card_image_url, :page_title, :page_header, :page_image, :page_image_width, :page_image_height, :page_image_link_target, :youtube_id)
+      params.require(:onda).permit(:tweet, :card_title, :card_description, :card_image_url, :page_title, :page_header, :page_image, :page_image_width, :page_image_height, :page_image_link_target, :youtube_id, :facebook_video_url)
     end
 end

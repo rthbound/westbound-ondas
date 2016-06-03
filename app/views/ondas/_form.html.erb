@@ -47,13 +47,18 @@
   </div>
 
   <div class="form-group">
+    <%= f.label :page_image_link_target %>
+    <%= f.text_area :page_image_link_target, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
     <%= f.label :youtube_id, "or youtube video id" %>
     <%= f.text_area :youtube_id, class: 'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= f.label :page_image_link_target %>
-    <%= f.text_area :page_image_link_target, class: 'form-control' %>
+    <%= f.label :facebook_video_url, "*or* facebook video url" %>
+    <%= f.text_area :facebook_video_url, class: 'form-control' %>
   </div>
 
   <div class="actions">

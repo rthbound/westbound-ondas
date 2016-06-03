@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160530163609) do
+ActiveRecord::Schema.define(version: 20160603231051) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20160530163609) do
     t.datetime "destroyed_at"
     t.string   "youtube_id"
     t.string   "tweet"
+    t.string   "facebook_video_url"
   end
 
   create_table "sheets", force: :cascade do |t|
