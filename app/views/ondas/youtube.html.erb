@@ -15,9 +15,9 @@
     <script async custom-element="amp-fit-text" src="https://cdn.ampproject.org/v0/amp-fit-text-0.1.js"></script> 
     <script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js" async></script>
     <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
+		<script async custom-element="amp-analytics"    src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
     <script async src="https://cdn.ampproject.org/v0.js"></script>
     <style amp-custom>
-      /* any custom style goes here */
       body {
         background-color: white;
         background: linear-gradient(45deg,#075DA4,#388FDA, #F5FFFA) no-repeat fixed;
@@ -50,6 +50,21 @@
     </style>
   </head>
   <body>
+		<amp-analytics type="googleanalytics" id="youtube-video">
+			<script type="application/json">
+				{
+					"vars": {
+						"account": "UA-78168080-1"
+					},
+					"triggers": {
+						"trackPageview": {
+							"on": "visible",
+							"request": "pageview"
+						}
+					}
+				}
+				</script>
+			</amp-analytics>
     <div class='heading'>
       <amp-fit-text
         height="40px"
