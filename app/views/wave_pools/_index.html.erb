@@ -27,6 +27,8 @@
         <td class='col-md-2'><%= wave_pool["page_header"] %></td>
           <% if wave_pool["youtube_id"].present? %>
             <td class='col-md-1'><%= wave_pool["youtube_id"] %></td>
+          <% elsif wave_pool["facebook_video_url"].present? %>
+            <td class='col-md-1'><%= wave_pool["facebook_video_url"] %></td>
           <% else %>
             <td class='col-md-1'><%= link_to(image_tag(wave_pool["page_image"], height: 50, width: 100), wave_pool["page_image_link_target"])%></td>
           <% end %>
