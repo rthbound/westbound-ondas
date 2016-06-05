@@ -13,6 +13,8 @@
 		<script async custom-element="amp-facebook" src="https://cdn.ampproject.org/v0/amp-facebook-0.1.js"></script>
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
     <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async custom-element="amp-fit-text" src="https://cdn.ampproject.org/v0/amp-fit-text-0.1.js"></script> 
+    <script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js" async></script>
     <script async src="https://cdn.ampproject.org/v0.js"></script>
     <style amp-custom>
       /* any custom style goes here */
@@ -36,13 +38,45 @@
         background-color: gray;
         border: 1px solid black;
       }
+
+			@media (max-width:668px) and (min-width: 500px) {
+				amp-facebook {
+					z-index: 1;
+				}
+			}
+			amp-facebook {
+				top: 50px;
+			}
+      amp-fit-text {
+        font-weight: 600;
+        margin-bottom: 0.25em;
+      }
+      footer {
+				position:absolute;
+				bottom:0;
+				width:100%;
+				height:170px;
+				margin-left: -2%;
+      }
     </style>
   </head>
   <body>
     <div class='heading'>
-      <h1><%= @onda.page_header %></h1>
+      <amp-fit-text
+        height="40px"
+        ><%= @onda.page_header %>
+      </amp-fit-text>
     </div>
     <amp-facebook
+			media="(max-width: 440px)"
+      width="552"
+      height="310"
+      layout="responsive"
+      data-embed-as="video"
+      data-href="<%= @onda.facebook_video_url %>">
+    </amp-facebook>
+    <amp-facebook
+			media="(min-width: 441px)"
       width="552"
       height="310"
       layout="fill"
@@ -50,6 +84,10 @@
       data-href="<%= @onda.facebook_video_url %>">
     </amp-facebook>
     <footer>
+			<div class='row-fluid'>
+				<amp-social-share height="60px" width="270px" data-param-url="<%= @onda.published_url %>" data-param-text="<%= @onda.tweet %>" type="twitter"></amp-social-share>
+			</div>
+			</br>
       <div></div>
     </footer>
   </body>
