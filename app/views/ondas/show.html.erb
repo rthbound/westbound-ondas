@@ -51,18 +51,35 @@
 		<amp-analytics type="googleanalytics" id="2x1-image">
 			<script type="application/json">
 				{
-					"vars": {
+          "vars": {
 						"account": "UA-78168080-1"
 					},
 					"triggers": {
 						"trackPageview": {
 							"on": "visible",
 							"request": "pageview"
+						},
+						"trackAnchorClicks": {
+							"on": "click",
+							"selector": "a",
+							"request": "event",
+							"vars": {
+								"eventLabel": "clicked on a link"
+							}
+						},
+						"trackClickOnTwitterLink" : {
+							"on": "click",
+							"selector": "#tweeter",
+							"request": "social",
+							"vars": {
+									"socialNetwork": "twitter",
+									"socialAction": "tweet"
+							}
 						}
 					}
 				}
-				</script>
-			</amp-analytics>
+			</script>
+		</amp-analytics>
     <div class='heading'>
       <amp-fit-text
         height="40px"
@@ -85,7 +102,7 @@
         layout="responsive"></amp-img>
     </a>
     </br>
-		<amp-social-share height="60px" width="270px" data-param-url="<%= @onda.published_url %>" data-param-text="<%= @onda.tweet %>" type="twitter"></amp-social-share>
+		<amp-social-share id="tweeter" height="60px" width="270px" data-param-url="<%= @onda.published_url %>" data-param-text="<%= @onda.tweet %>" type="twitter"></amp-social-share>
     <footer>
       <div></div>
     </footer>
