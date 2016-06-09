@@ -91,14 +91,14 @@
         media="(min-width: 800px)"
         src="<%= @onda.page_image %>"
         alt="<%= "Image for " + @onda.card_title %>"
-        height="400"
-        width="800"></amp-img>
+        height="<%= @onda.page_image_height || "400" %>"
+        width=<%= @onda.page_image_width || "800" %>"></amp-img>
       <amp-img
         media="(max-width: 799px)"
         src="<%= @onda.page_image %>"
         alt="<%= "Image for " + @onda.card_title %>"
-        height="200"
-        width="400"
+        height="<%= @onda.page_image_height || "400" %>"
+        width=<%= @onda.page_image_width || "800" %>"
         layout="responsive"></amp-img>
     </a>
     </br>
