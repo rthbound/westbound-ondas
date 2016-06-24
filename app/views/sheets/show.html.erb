@@ -66,8 +66,8 @@ Lora:400,700italic,700,400italic' rel='stylesheet' type='text/css'>
           el = el.replace(/:cloud:/g, '☁')
           el = el.replace(/:lightning:/g, '⚡')
           el = el.replace(/:ocean:/g, '🌊')
-          $(".row").append($("<p class='tweet'>@" + el + " " + $('#tweet').val() + "<br /><a class='btn button-hvr-shadow-radial' href=\"https://twitter.com/intent/tweet?text="
-                              + encodeURIComponent("@" + el + " " + $('#tweet').val())
+          $(".row").append($("<p class='tweet'>" + el + " " + $('#tweet').val() + "<br /><a class='btn button-hvr-shadow-radial' href=\"https://twitter.com/intent/tweet?text="
+                              + encodeURIComponent(el + " " + $('#tweet').val())
                               + "\" target='_blank'><span><strong>"
                               + i + " - Tweet This</strong></span></a></p>"));
           });
