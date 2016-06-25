@@ -9,6 +9,10 @@
     <meta name="twitter:title" content="<%= @onda.card_title %>">
     <meta name="twitter:description" content="<%= @onda.card_description %>">
     <meta name="twitter:image" content="<%= @onda.card_image_url %>">
+    <meta property="og:title" content="<%= @onda.card_title %>"/>
+    <meta property="og:image" content="<%= @onda.card_image_url %>"/>
+    <meta property="og:site_name" content="#TeamSecondWave"/>
+    <meta property="og:description" content="<%= @onda.card_description %>"/>
     <link rel="canonical" href="http://we.stbound.com/ondas/<%= @onda.id %>" />
 		<script async custom-element="amp-facebook" src="https://cdn.ampproject.org/v0/amp-facebook-0.1.js"></script>
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
@@ -66,6 +70,11 @@
         border-radius: 60px;
 				background-image: url('/twitter.svg');
       }
+      .video {
+        max-width: 800px;
+        text-align: center;
+        margin: auto;
+      }
     </style>
   </head>
   <body>
@@ -99,22 +108,16 @@
         ><%= @onda.page_header %>
       </amp-fit-text>
     </div>
-    <amp-facebook
-			media="(max-width: 440px)"
-      width="552"
-      height="310"
-      layout="responsive"
-      data-embed-as="video"
-      data-href="<%= @onda.facebook_video_url %>">
-    </amp-facebook>
-    <amp-facebook
-			media="(min-width: 441px)"
-      width="552"
-      height="310"
-      layout="fill"
-      data-embed-as="video"
-      data-href="<%= @onda.facebook_video_url %>">
-    </amp-facebook>
+    <div class='video'>
+      <amp-facebook
+        data-embed-as="video"
+        data-href="<%= @onda.facebook_video_url %>"
+        layout="responsive"
+        data-allowfullscreen="true"
+        data-autoplay="true"
+        width="720" height="405">
+      </amp-facebook>
+    </div>
     <footer>
 			<div class='row-fluid'>
 				<amp-social-share id="tweeter" height="60px" width="270px" data-param-url="<%= @onda.published_url %>" data-param-text="<%= @onda.tweet %>" type="twitter"></amp-social-share>
