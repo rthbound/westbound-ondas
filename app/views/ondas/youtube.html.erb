@@ -40,21 +40,22 @@
         margin-top: 0.4em;
         z-index: 100000;
         border-radius: 3px;
+        background-color: rgba(210,105,111, 0.5);
       }
-      @media (min-width: 500px) {
-        amp-fit-text {
-          background-color: rgba(210,105,111, 0.5);
+      .video {
+        max-width: 800px;
+        text-align: center;
+        margin: auto;
+      }
+      @media (max-width:668px) and (min-width: 500px) {
+        amp-youtube {
+          z-index: 1;
         }
       }
-			@media (max-width:668px) and (min-width: 500px) {
-				amp-youtube {
-					z-index: 1;
-				}
-			}
       @media (max-height: 768px) {
-				amp-youtube {
-					z-index: 1;
-				}
+        amp-youtube {
+          z-index: 1;
+        }
       }
       footer {
 				position:absolute;
@@ -112,6 +113,7 @@
 							"vars": {
 									"socialNetwork": "twitter",
 									"socialAction": "tweet"
+                  "socialTarget": "https://cdn.ampproject.org/c/we.stbound.com/ondas/<%= @onda.id %>"
 							}
 						}
 					}
@@ -124,30 +126,13 @@
         ><%= @onda.page_header %>
       </amp-fit-text>
     </div>
-    <amp-youtube
-        media="(min-width: 769px)"
-        data-videoid=<%= @onda.youtube_id %>
-        data-param-autoplay=1
-        layout="fill"
-        width="720" height="405"></amp-youtube>
-    <amp-youtube
-        media="(min-width: 737px) and (max-width: 768px)"
-        data-videoid=<%= @onda.youtube_id %>
-        data-param-autoplay=1
-        layout="responsive"
-        width="480" height="270"></amp-youtube>
-    <amp-youtube
-        media="(min-width: 436px) and (max-width: 736px)"
-        data-videoid=<%= @onda.youtube_id %>
-        data-param-autoplay=1
-        layout="fill"
-        width="480" height="270"></amp-youtube>
-    <amp-youtube
-        media="(max-width: 435px)"
-        data-videoid=<%= @onda.youtube_id %>
-        data-param-autoplay=1
-        layout="responsive"
-        width="480" height="270"></amp-youtube>
+    <div class='video'>
+      <amp-youtube
+          data-videoid=<%= @onda.youtube_id %>
+          data-param-autoplay=1
+          layout="responsive"
+          width="720" height="405"></amp-youtube>
+    </div>
     <footer>
       <amp-social-share id="tweeter" height="60px" width="270px" data-param-url="<%= @onda.published_url %>" data-param-text="<%= @onda.tweet %>" type="twitter"></amp-social-share>
       <div></div>
