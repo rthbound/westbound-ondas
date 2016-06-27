@@ -6,7 +6,7 @@ class SheetsController < ApplicationController
   # GET /sheets
   # GET /sheets.json
   def index
-    @sheets = Sheet.all
+    @sheets = Sheet.order(:id)
   end
 
   # GET /sheets/1
