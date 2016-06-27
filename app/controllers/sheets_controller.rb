@@ -16,7 +16,7 @@ class SheetsController < ApplicationController
 
     if request.xhr?
       response = open(@sheet.url).read.split("\r\n").uniq
-      response.map {|x| x.gsub!(/^/, ".@") }
+      response.map {|x| x.gsub!(/^/, params[:dots] ? ".@" : "@") }
       render json: response and return
     end
 

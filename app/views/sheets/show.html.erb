@@ -59,7 +59,7 @@ Lora:400,700italic,700,400italic' rel='stylesheet' type='text/css'>
   </style>
   <script type='text/javascript'>
     $(document).ready(function(){
-      $.get("/sheets/<%= @sheet.id %>?passphrase=<%= @sheet.passphrase %>", function(data){
+      $.get("/sheets/<%= @sheet.id %>?passphrase=<%= @sheet.passphrase %><%= "&dots=1" if params[:dots] %>", function(data){
         var html = $.map(data, function(el,i){
           el = el.replace(/["]+/g, '')
           el = el.replace(/:flame:/g, '🔥')
