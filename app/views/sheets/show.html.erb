@@ -60,14 +60,27 @@ Lora:400,700italic,700,400italic' rel='stylesheet' type='text/css'>
   <script type='text/javascript'>
     $(document).ready(function(){
       $.get("/sheets/<%= @sheet.id %>?passphrase=<%= @sheet.passphrase %><%= "&dots=1" if params[:dots] %>", function(data){
+        var ohOne = [false, true];
         var html = $.map(data, function(el,i){
+          ohOne = ohOne.reverse();
+          var tweet = $('#tweet').val();
+          if(ohOne[0]) {
+            if((i/2) % 2 == 0){
+              tweet = tweet.replace(/we\.stbound\.com/, "s/hidden-bayou-95186.herokuapp.com")
+            } else {
+              tweet = tweet.replace(/we\.stbound\.com/, "hidden-bayou-95186.herokuapp.com")
+            }
+          }
+
+          tweet = tweet.replace(/ondas\/(\d+)\/\d+/, "ondas/$1/" + Math.random().toString(36).substring(7));
+
           el = el.replace(/["]+/g, '')
           el = el.replace(/:flame:/g, '🔥')
           el = el.replace(/:cloud:/g, '☁')
           el = el.replace(/:lightning:/g, '⚡')
           el = el.replace(/:ocean:/g, '🌊')
-          $(".row").append($("<p class='tweet'>" + el + " " + $('#tweet').val() + "<br /><a class='btn button-hvr-shadow-radial' href=\"https://twitter.com/intent/tweet?text="
-                              + encodeURIComponent(el + " " + $('#tweet').val())
+          $(".row").append($("<p class='tweet'>" + el + " " + tweet + "<br /><a class='btn button-hvr-shadow-radial' href=\"https://twitter.com/intent/tweet?text="
+                              + encodeURIComponent(el + " " + tweet)
                               + "\" target='_blank'><span><strong>"
                               + i + " - Tweet This</strong></span></a></p>"));
           });

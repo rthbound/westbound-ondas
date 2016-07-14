@@ -12,6 +12,6 @@ class Onda < ApplicationRecord
   end
 
   def published_url
-    "https://cdn.ampproject.org/c/" + onda_url(self).gsub(/http[s]{0,1}:\/\//, { 'http://' => '', 'https://' => 's/'})
+    "https://cdn.ampproject.org/c/" + random_onda_url(self, rand(10e6)).gsub(/http[s]{0,1}:\/\//, { 'http://' => '', 'https://' => 's/'})
   end
 end

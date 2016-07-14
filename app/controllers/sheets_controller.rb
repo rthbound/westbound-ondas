@@ -15,7 +15,7 @@ class SheetsController < ApplicationController
     @sheet = Sheet.where(id: params[:id], passphrase: params[:passphrase].to_s).first!
 
     if request.xhr?
-      response = open(@sheet.url).read.split("\r\n").uniq
+      response = open(@sheet.url).read.split("\r\n").uniq.shuffle(random: Random.new(params[:passphrase].codepoints.inject(:+)))
       response.map {|x| x.gsub!(/^/, params[:dots] ? ".@" : "@") }
       render json: response and return
     end
